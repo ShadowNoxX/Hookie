@@ -1,5 +1,5 @@
 # Hookie
-Finds discord webhooks in exe file
+Finds discord webhooks in binary file
 
 ```bash
 $ webh Example.exe
