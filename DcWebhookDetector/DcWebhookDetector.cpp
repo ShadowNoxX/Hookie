@@ -32,18 +32,30 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 	regex regexp(R"(https:\/\/discord\.com\/api\/webhooks\/[^\/]+\/[^\/]{68})");
+	regex upx("UPX.");
 	string s = slurp(argv[1]);
 	if (s == "No") {
+		cout << "Uh" << std::endl;
 		return 1;
 	}
 	smatch m;
 	regex_search(s, m, regexp);
 
-	
+	smatch u;
+	regex_search(s, u, upx);
+
+	bool packed = false;
+	for (auto e : u) {
+		packed = true;
+	}
+	if (packed) {
+		cout << "This file was packed with U.P.X please unpack it!" << endl;
+		return 0;
+	}
 	bool found = false;
-	for (auto x : m) {
+	for (auto f : m) {
 		found = true;
-		cout << "Found : " << x << endl;
+		cout << "Found : " << f << endl;
 	}
 
 	if (!found) {
